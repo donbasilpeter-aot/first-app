@@ -28,12 +28,29 @@ app.post("/lists", (req, res) => {  //save one list
 
 });
 
-app.get("/lists/:Id", (req, res) => {
+app.get("/lists/:Id", (req, res) => { //get list based on id
     List.findById(req.params.Id)
     .then(list => res.send(list))
     .catch(err => console.log(err));
 
 });
+
+app.patch("/lists/:Id", (req,res) => {  //update one 
+    List.findOneAndUpdate({ "_id" : req.params.Id},{$set : req.body })
+        .then(list => res.send(list))
+        .catch(err => console.log(err));
+
+});
+
+app.delete("/lists/:Id", (req, res) => {
+    List.findByIdAndDelete(req.params.Id)
+    .then(list => res.send(list))
+    .catch(err => console.log(err));
+
+});
+
+
+
 
 
 
