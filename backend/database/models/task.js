@@ -6,7 +6,7 @@ const TaskSchema = new  mongoose.Schema({
     title : {
         type : String,
         trim :true,
-        minlength :10
+        minlength :2
     },
     _listId :{
         type : mongoose.Types.ObjectId,
@@ -14,7 +14,7 @@ const TaskSchema = new  mongoose.Schema({
     },
     Status : {
         type : Boolean,
-        required : true,
+        required : true,    
         default : false
     }
 }) 
