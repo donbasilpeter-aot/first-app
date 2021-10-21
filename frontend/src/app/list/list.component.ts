@@ -20,12 +20,11 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
     (params:Params)=> {
-      console.log(params.list_id)
       this.taskService.getTask(params.list_id).subscribe((tasks:any)=>{
         this.tasks =tasks;
       });
     });
-
+    
     this.taskService.getList().subscribe((lists:any) => {
       this.lists = lists;
     
@@ -36,20 +35,36 @@ export class ListComponent implements OnInit {
 
   createList(title:string){
  
-    this.taskService.createList(title).subscribe((response:any)=>{
+        this.taskService.createList(title).subscribe((response:any)=>{
+          
+              this.taskService.getList().subscribe((lists:any) => {
+                this.lists = lists;
+              
+              });
+
+          });
+        }
+
+  createTask( title:string){
+
+    this.route.params.subscribe((params:Params)=> {
+
+            this.taskService.createTask(params.list_id, title).subscribe((response:any)=>{ 
+
+              
+                this.taskService.getTask(params.list_id).subscribe((tasks:any)=>{
+                  this.tasks =tasks;
+                });
       
-    this.taskService.getList().subscribe((lists:any) => {
-      this.lists = lists;
+            });
+
+      });
+
+
     
-    });
+ 
 
-      
-      
-    });
-
-   
-
-
-  }
+      }
+    
 
 }

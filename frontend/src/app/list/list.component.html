@@ -10,22 +10,20 @@
     
             </ul>
         </div>
-        <input type="text" #input>
-        <button (click) = "createList(input.value)">Add List</button>    
+        <input type="text" #listInput>
+        <button (click) = "createList(listInput.value)">Add List</button>    
     </div>
 
     <div class="task-container">
         <h1>task</h1>
         <div class="task-details">
-            <p class="list-name">
-                list name 
-            </p>
+            
             <ul class="task-list">
                 <li *ngFor =" let task of tasks">{{task.title}}</li>
     
             </ul>
-          
-    
+            <input type="text" #taskInput>
+        <button (click) = "createTask(taskInput.value)">Add List</button>    
     
         </div>
         

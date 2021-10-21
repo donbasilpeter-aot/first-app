@@ -68,7 +68,7 @@ app.get("/tasks/:listId",(req, res) => {     //get  tasks of a particular list
 app.post("/tasks/:listId", (req,res) => {       //add a new task 
     (new Task({title : req.body.title, _listId : req.params.listId}))
     .save()
-    .then(() => res.send(res.statusCode))
+    .then(() => res.send({"rescode" :res.statusCode}))
     .catch(err => res.send(err));
     
 })  ;
