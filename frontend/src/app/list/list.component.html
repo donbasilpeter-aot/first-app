@@ -1,0 +1,39 @@
+
+<div class="task-manager">
+
+    <div class="list-container">
+        <h1>lists</h1>
+    
+        <div class="list-menu">
+            <ul>
+                <li *ngFor =" let list of lists"><a href="/lists/{{list._id}}" >{{list.title}}</a></li>
+    
+            </ul>
+        </div>
+        <input type="text" #input>
+        <button (click) = "createList(input.value)">Add List</button>    
+    </div>
+
+    <div class="task-container">
+        <h1>task</h1>
+        <div class="task-details">
+            <p class="list-name">
+                list name 
+            </p>
+            <ul class="task-list">
+                <li *ngFor =" let task of tasks">{{task.title}}</li>
+    
+            </ul>
+          
+    
+    
+        </div>
+        
+    
+        </div>
+  
+  </div>
+  
+  
+
+
